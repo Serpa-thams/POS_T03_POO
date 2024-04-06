@@ -1,12 +1,14 @@
 package tech.thami.pessoas;
+
 import tech.thami.composicoes.*;
 import java.time.LocalDate;
 
 public class Funcionario extends Pessoa{
-    private String matricula;
+    private int matricula;
     private double salario;
     private LocalDate dataAdmissao;
-    private Profissao cargo;
+    private Cargo cargo;
+
 
     public Funcionario() {
         System.out.println("Criando funcionário");
@@ -20,11 +22,19 @@ public class Funcionario extends Pessoa{
         this.dataAdmissao = dataAdmissao;
     }
 
-    public String getMatricula() {
+    public void reajustarSalario(double percentual){
+        this.salario = this.salario * (1 + (percentual/100)); // this.salario += (this.salario + (percentual/100));
+    }
+    public void promover(Cargo novoCargo){
+        this.cargo = novoCargo;
+    }
+
+
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -44,11 +54,11 @@ public class Funcionario extends Pessoa{
         this.dataAdmissao = dataAdmissao;
     }
 
-    public Profissao getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(Profissao cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 }
